@@ -3,18 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Budget</title>
-    <link rel="stylesheet" href="/reset.css">
-    <link rel="stylesheet" href="/main.css">
+    <title>Personal Budget - Manage Your Expenses Efficiently</title>
+
+    <!-- This is an SEO Change -->
+    <meta name="description" content="Manage your expenses, stay on track, get alerts, and achieve financial freedom with our easy-to-use Personal Budget app.">
+    <!-- This is an SEO Change -->
+    <meta name="keywords" content="personal budget, expense management, financial planning, budgeting app, free budget app">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="main.css">
+
+    <!-- This is an A11y Change -->
+    <link rel="preload" href="/main.css" as="style">
 </head>
 <body>
 
-    <div class="menu">
+
+    <!-- This is a Semantic HTML Change -->
+    <div class="menu" aria-label="Main Navigation">
         <ul>
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/login.html">Login</a></li>
-            <li><a href="https://google.com">Google</a></li>
+            <!-- This is an A11y Change -->
+            <li><a href="/" aria-label="Homepage">Homepage</a></li>
+            <li><a href="about.html" aria-label="About us page">About</a></li>
+            <li><a href="login.html" aria-label="Login page">Login</a></li>
+            <li><a href="https://google.com" aria-label="Search on Google" target="_blank" rel="noopener noreferrer">Google</a></li>
         </ul>
     </div>
 
@@ -22,84 +33,74 @@
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
     </div>
+    <!-- This is a Semantic HTML Change -->
+    <main class="container center">
 
-    <div class="container center">
+        <!-- This is a Semantic HTML Change -->
+        <section class="page-area">
 
-        <div class="page-area">
+            <!-- This is an SEO Change and A11y Change -->
+            <article class="text-box" aria-labelledby="stay-on-track">
+                <h2 id="stay-on-track">Stay on Track</h2>
+                <p>
+                    Do you know where you are spending your money? Proper budget management depends on real data, and this app will help you track every expense to stay on top of your budget!
+                </p>
+                <!-- This is an SEO Change -->
+                <a href="/learn-more" aria-label="Learn more about tracking expenses">Learn More</a>
+            </article>
+    
+            <article class="text-box" aria-labelledby="get-alerts">
+                <h2 id="get-alerts">Get Alerts on Overspending</h2>
+                <p>
+                    What if your clothing budget exceeded? You will get an alert. The goal is to never go over the budget, and this app helps you achieve that.
+                </p>
+                <!-- This is an SEO Change -->
+                <a href="/alerts-info" aria-label="Find out more about budget alerts">Find Out More</a>
+            </article>
+    
+            <article class="text-box" aria-labelledby="see-results">
+                <h2 id="see-results">See the Results</h2>
+                <p>
+                    People who stick to a financial plan and budget every expense get out of debt faster! They live happier lives as they spend without guilt or fear, knowing it is all accounted for.
+                </p>
+                <!-- This is an SEO Change -->
+                <a href="/results" aria-label="Read success stories of financial planning">Read Success Stories</a>
+            </article>
+    
+            <article class="text-box" aria-labelledby="free-to-use">
+                <h2 id="free-to-use">Free to Use</h2>
+                <p>
+                    This app is free! And you are the only one holding your data! Start using it today and see the difference it makes in managing your finances.
+                </p>
+                <!-- This is an SEO Change -->
+                <a href="/sign-up" aria-label="Sign up for free budget management app">Sign Up Now</a>
+            </article>
 
-            <div class="text-box">
-                <h1>Stay on track</h1>
-                <p>
-                    Do you know where you are spending your money? If you really stop to track it down,
-                    you would get surprised! Proper budget management depends on real data... and this
-                    app will help you with that!
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Alerts</h1>
-                <p>
-                    What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Results</h1>
-                <p>
-                    People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                    Also, they to live happier lives... since they expend without guilt or fear... 
-                    because they know it is all good and accounted for.
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Free</h1>
-                <p>
-                    This app is free!!! And you are the only one holding your data!
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Stay on track</h1>
-                <p>
-                    Do you know where you are spending your money? If you really stop to track it down,
-                    you would get surprised! Proper budget management depends on real data... and this
-                    app will help you with that!
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Alerts</h1>
-                <p>
-                    What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Results</h1>
-                <p>
-                    People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                    Also, they to live happier lives... since they expend without guilt or fear... 
-                    because they know it is all good and accounted for.
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Free</h1>
-                <p>
-                    This app is free!!! And you are the only one holding your data!
-                </p>
-            </div>
+        </section>
 
-        </div>
+    </main>
 
-    </div>
-
-    <div class="bottom">
+    <!-- This is a Semantic HTML Change -->
+    <footer class="bottom" aria-label="Footer">
         <div class="center">
-            All rights reserved &copy; Fabio Nolasco
+            <!-- This is an SEO Change -->
+            <p>All rights reserved &copy; Fabio Nolasco. | <a href="/privacy-policy" aria-label="Read our privacy policy">Privacy Policy</a></p>
         </div>
-    </div>
+    </footer>
+
+    <!-- This is an A11y Change -->
+    <script>
+        // Add focus outline only for keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Tab') {
+                document.body.classList.add('user-is-tabbing');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('user-is-tabbing');
+        });
+    </script>
 
 </body>
 </html>
