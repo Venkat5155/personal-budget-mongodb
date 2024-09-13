@@ -1,0 +1,12 @@
+{
+    "budget": [
+      { "category": "rent", "amount": 1500 },
+      { "category": "grocery", "amount": 315 },
+      { "category": "utilities", "amount": 160 },
+      { "category": "transportation", "amount": 276 },
+      { "category": "entertainment", "amount": 135 },
+      { "category": "savings", "amount": 415 },
+      { "category": "healthcare", "amount": 265 }
+    ]
+  }
+  
