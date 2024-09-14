@@ -1,12 +1,32 @@
-{
-    "budget": [
-      { "category": "rent", "amount": 1500 },
-      { "category": "grocery", "amount": 315 },
-      { "category": "utilities", "amount": 160 },
-      { "category": "transportation", "amount": 276 },
-      { "category": "entertainment", "amount": 135 },
-      { "category": "savings", "amount": 415 },
-      { "category": "healthcare", "amount": 265 }
+  {
+    "myBudget": [
+        {
+            "title": "rent",
+            "budget": 1500
+        },
+        {
+            "title": "grocery",
+            "budget": 315
+        },
+        {
+            "title": "utilities",
+            "budget": 160
+        },
+        {
+            "title": "transportation",
+            "budget": 276
+        },
+        {
+            "title": "entertainment",
+            "budget": 135
+        },
+        {
+            "title": "savings",
+            "budget": 415
+        },
+        {
+            "title": "healthcare",
+            "budget": 265
+        }
     ]
-  }
-  
+}
