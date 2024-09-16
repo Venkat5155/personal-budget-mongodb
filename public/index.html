@@ -67,15 +67,19 @@
                 <a href="/results" aria-label="Read success stories of financial planning">Read Success Stories</a>
             </article>
     
-            <article class="text-box" aria-labelledby="free-to-use">
-                <h2 id="free-to-use">Chart</h2>
-                <p>
-                    
-                    <canvas id ="myChart" width="80" height="80"></canvas>
-                </p>
-                <!-- This is an SEO Change -->
-                <a href="/sign-up" aria-label="Sign up for free budget management app">Sign Up Now</a>
-            </article>
+            <div class="charts">
+                <!-- This is a Semantic HTML change -->
+                <article class="text-box d3js" id="d3jsChart">
+                    <h1>D3js Chart</h1>
+                </article>
+                <!-- This is a Semantic HTML change -->
+                <article class="text-box">
+                    <h1>Pie Chart</h1>
+                    <p>
+                        <canvas id="myChart" min-width="400" min-height="400"></canvas>
+                    </p>
+                </article>
+            </div>
 
         </section>
 
@@ -237,8 +241,8 @@
                         "budget": res.data.myBudget[i].budget
                     })
                 }
-                createChart();
                 populateD3jsChart();
+                createChart();
             })
         }
 
