@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Budget = require("./models/Budget");
-const fs = require("fs"); // File system module
-const path = require("path"); // Path module
+const fs = require("fs");
+const path = require("path");
 const app = express();
-const port = 3001; // Change this if port is in use
+const port = 3001;
 
-app.use(express.json()); // Middleware to parse JSON requests
-app.use('/', express.static('public')); // Serve static files
+app.use(express.json());
+app.use('/', express.static('public'));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/budgetDB', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -31,11 +31,33 @@ app.post("/budget", async (req, res) => {
 
     try {
         const savedBudget = await newBudget.save();
+        updateBudgetDataJSON(savedBudget); // Update JSON file after saving to MongoDB
         res.status(201).json(savedBudget);
     } catch (err) {
         res.status(400).send(err);
     }
 });
+
+// Function to update the JSON file
+function updateBudgetDataJSON(newEntry) {
+    fs.readFile(path.join(__dirname, 'budget-data.json'), 'utf8', (err, data) => {
+        if (err) {
+            console.error("Error reading JSON file:", err);
+            return;
+        }
+        const jsonData = JSON.parse(data);
+        jsonData.myBudget.push({
+            title: newEntry.title,
+            budget: newEntry.budget,
+        });
+
+        fs.writeFile(path.join(__dirname, 'budget-data.json'), JSON.stringify(jsonData, null, 2), (err) => {
+            if (err) {
+                console.error("Error writing to JSON file:", err);
+            }
+        });
+    });
+}
 
 // Start the server
 app.listen(port, () => {
