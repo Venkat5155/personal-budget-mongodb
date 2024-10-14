@@ -4,24 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Budget - Manage Your Expenses Efficiently</title>
-
-    <!-- This is an SEO Change -->
     <meta name="description" content="Manage your expenses, stay on track, get alerts, and achieve financial freedom with our easy-to-use Personal Budget app.">
-    <!-- This is an SEO Change -->
     <meta name="keywords" content="personal budget, expense management, financial planning, budgeting app, free budget app">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
-
-    <!-- This is an A11y Change -->
     <link rel="preload" href="/main.css" as="style">
 </head>
 <body>
-
-
-    <!-- This is a Semantic HTML Change -->
     <div class="menu" aria-label="Main Navigation">
         <ul>
-            <!-- This is an A11y Change -->
             <li><a href="/" aria-label="Homepage">Homepage</a></li>
             <li><a href="about.html" aria-label="About us page">About</a></li>
             <li><a href="login.html" aria-label="Login page">Login</a></li>
@@ -33,220 +24,146 @@
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
     </div>
-    <!-- This is a Semantic HTML Change -->
     <main class="container center">
-
-        <!-- This is a Semantic HTML Change -->
         <section class="page-area">
-
-            <!-- This is an SEO Change and A11y Change -->
             <article class="text-box" aria-labelledby="stay-on-track">
                 <h2 id="stay-on-track">Stay on Track</h2>
-                <p>
-                    Do you know where you are spending your money? Proper budget management depends on real data, and this app will help you track every expense to stay on top of your budget!
-                </p>
-                <!-- This is an SEO Change -->
+                <p>Do you know where you are spending your money? Proper budget management depends on real data, and this app will help you track every expense to stay on top of your budget!</p>
                 <a href="/learn-more" aria-label="Learn more about tracking expenses">Learn More</a>
             </article>
     
             <article class="text-box" aria-labelledby="get-alerts">
                 <h2 id="get-alerts">Get Alerts on Overspending</h2>
-                <p>
-                    What if your clothing budget exceeded? You will get an alert. The goal is to never go over the budget, and this app helps you achieve that.
-                </p>
-                <!-- This is an SEO Change -->
+                <p>What if your clothing budget exceeded? You will get an alert. The goal is to never go over the budget, and this app helps you achieve that.</p>
                 <a href="/alerts-info" aria-label="Find out more about budget alerts">Find Out More</a>
             </article>
     
             <article class="text-box" aria-labelledby="see-results">
                 <h2 id="see-results">See the Results</h2>
-                <p>
-                    People who stick to a financial plan and budget every expense get out of debt faster! They live happier lives as they spend without guilt or fear, knowing it is all accounted for.
-                </p>
-                <!-- This is an SEO Change -->
+                <p>People who stick to a financial plan and budget every expense get out of debt faster! They live happier lives as they spend without guilt or fear, knowing it is all accounted for.</p>
                 <a href="/results" aria-label="Read success stories of financial planning">Read Success Stories</a>
             </article>
     
             <div class="charts">
-                <!-- This is a Semantic HTML change -->
                 <article class="text-box d3js" id="d3jsChart">
                     <h1>D3js Chart</h1>
                 </article>
-                <!-- This is a Semantic HTML change -->
                 <article class="text-box">
                     <h1>Pie Chart</h1>
-                    <p>
-                        <canvas id="myChart" min-width="400" min-height="400"></canvas>
-                    </p>
+                    <canvas id="myChart" min-width="400" min-height="400"></canvas>
                 </article>
             </div>
-
         </section>
-
     </main>
 
-    <!-- This is a Semantic HTML Change -->
     <footer class="bottom" aria-label="Footer">
         <div class="center">
-            <!-- This is an SEO Change -->
             <p>All rights reserved &copy; Ramesh Venkat Reddy Konda. | <a href="/privacy-policy" aria-label="Read our privacy policy">Privacy Policy</a></p>
         </div>
     </footer>
 
-    <!-- This is an A11y Change -->
     <script>
-        // Add focus outline only for keyboard navigation
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Tab') {
                 document.body.classList.add('user-is-tabbing');
             }
         });
-
         document.addEventListener('mousedown', function() {
             document.body.classList.remove('user-is-tabbing');
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script> <!-- Updated to only use v7 -->
+
     <script>
-        var dataSource ={
-        labels: [],
-            datasets:[
-                {
-                    data: [],
-                    backgroundColor: [
-                        '#CC0003',
-                        '#45818d',
-                        '#c90078',
-                        '#783f09',
-                        '#ffcd51',
-                        '#ff6383',
-                        '#36a2e0',
-                        '#fd6b19',
-                        '#f6b26f'
-                    ],
-                }
-            ],
+        var dataSource = {
+            labels: [],
+            datasets: [{
+                data: [],
+                backgroundColor: [
+                    '#CC0003',
+                    '#45818d',
+                    '#c90078',
+                    '#783f09',
+                    '#ffcd51',
+                    '#ff6383',
+                    '#36a2e0',
+                    '#fd6b19',
+                    '#f6b26f'
+                ],
+            }],
             myBudget: []
         };
         
         function createChart() {
-            var ctx =document.getElementById("myChart").getContext("2d");
+            var ctx = document.getElementById("myChart").getContext("2d");
             var myPieChart = new Chart(ctx, {
                 type: 'pie',
                 data: dataSource
             });
         }
-        function populateD3jsChart(){
-            // set the dimensions and margins of the graph
-            var width = 450
-                height = 450
-                margin = 40
 
-            // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-            var radius = Math.min(width, height) / 2 - margin
+        function populateD3jsChart() {
+            var width = 450,
+                height = 450,
+                margin = 40;
 
-            // append the svg object to the div called 'my_dataviz'
+            var radius = Math.min(width, height) / 2 - margin;
             var svg = d3.select("#d3jsChart")
-            .append("svg")
+                .append("svg")
                 .attr("width", width)
                 .attr("height", height)
-            .append("g")
+                .append("g")
                 .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-            // Create dummy data
             var data = dataSource.myBudget;
 
-            // set the color scale
-            var color = d3.scaleOrdinal()
-            .range(d3.schemeDark2);
+            var color = d3.scaleOrdinal(d3.schemeDark2);
+            var pie = d3.pie().value(function(d) { return d.budget; }); // Change to use the correct property
+            var data_ready = pie(data);
 
-            // Compute the position of each group on the pie:
-            var pie = d3.pie()
-            .sort(null) // Do not sort group by size
-            .value(function(d) {return d.value.budget; })
-            var data_ready = pie(d3.entries(data))
-
-            // The arc generator
             var arc = d3.arc()
-            .innerRadius(radius * 0.45)         // This is the size of the donut hole
-            .outerRadius(radius * 0.8)
+                .innerRadius(radius * 0.45)
+                .outerRadius(radius * 0.8);
 
-            // Another arc that won't be drawn. Just for labels positioning
-            var outerArc = d3.arc()
-            .innerRadius(radius * 0.9)
-            .outerRadius(radius * 0.9)
+            svg.selectAll('allSlices')
+                .data(data_ready)
+                .enter()
+                .append('path')
+                .attr('d', arc)
+                .attr('fill', function(d) { return color(d.data.title); }) // Corrected color mapping
+                .attr("stroke", "white")
+                .style("stroke-width", "2px")
+                .style("opacity", 0.7);
 
-            // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-            svg
-            .selectAll('allSlices')
-            .data(data_ready)
-            .enter()
-            .append('path')
-            .attr('d', arc)
-            .attr('fill', function(d){ return(color(d.data.value.title)) })
-            .attr("stroke", "white")
-            .style("stroke-width", "2px")
-            .style("opacity", 0.7)
-
-            // Add the polylines between chart and labels:
-            svg
-            .selectAll('allPolylines')
-            .data(data_ready)
-            .enter()
-            .append('polyline')
-                .attr("stroke", "black")
-                .style("fill", "none")
-                .attr("stroke-width", 1)
-                .attr('points', function(d) {
-                var posA = arc.centroid(d) // line insertion in the slice
-                var posB = outerArc.centroid(d) // line break: we use the other arc generator that has been built only for that
-                var posC = outerArc.centroid(d); // Label position = almost the same as posB
-                var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2 // we need the angle to see if the X position will be at the extreme right or extreme left
-                posC[0] = radius * 0.95 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
-                return [posA, posB, posC]
-                })
-
-            // Add the polylines between chart and labels:
-            svg
-            .selectAll('allLabels')
-            .data(data_ready)
-            .enter()
-            .append('text')
-                .text( function(d) { return d.data.value.title } )
+            svg.selectAll('allLabels')
+                .data(data_ready)
+                .enter()
+                .append('text')
+                .text(function(d) { return d.data.title; })
                 .attr('transform', function(d) {
-                    var pos = outerArc.centroid(d);
-                    var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
-                    pos[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
+                    var pos = arc.centroid(d);
                     return 'translate(' + pos + ')';
                 })
-                .style('text-anchor', function(d) {
-                    var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
-                    return (midangle < Math.PI ? 'start' : 'end')
-                })
+                .style('text-anchor', 'middle');
         }
 
-        function getBudget(){
+        function getBudget() {
             axios.get('/budget')
-            .then(function (res) {
-                // console.log(res.data);
-                for(var i = 0; i < res.data.myBudget.length; i++){
-                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-                    dataSource.labels[i] = res.data.myBudget[i].title;
-                    dataSource.myBudget.push({
-                        "title": res.data.myBudget[i].title,
-                        "budget": res.data.myBudget[i].budget
-                    })
-                }
-                populateD3jsChart();
-                createChart();
-            })
+                .then(function(res) {
+                    dataSource.datasets[0].data = res.data.map(item => item.budget);
+                    dataSource.labels = res.data.map(item => item.title);
+                    dataSource.myBudget = res.data; // Store the complete data for D3.js
+                    createChart();
+                    populateD3jsChart();
+                })
+                .catch(function(error) {
+                    console.error("Error fetching budget data:", error);
+                });
         }
 
-        getBudget();
+        window.onload = getBudget; // Ensure this runs after the page loads
     </script>
 </body>
 </html>
